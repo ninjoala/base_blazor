@@ -1,0 +1,52 @@
+﻿@page
+@using Microsoft.AspNetCore.Components
+@using baseline_blazor.Client
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@inject PersistentComponentState ApplicationState
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <meta name="description" content="The Mosley Band Program is a group of award winning marching and concert bands located in Panama City, Florida. Mosley Bands is dedicated to producing quality musicians and strives to develop youth who will go on to be vigilant leaders in their lives.">
+    <title>Mosley Bands</title>
+    <base href="/" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="baseline_blazor.Client.styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com">
+    <link href="https://fonts.gstatic.com" crossorigin>
+    <script src="/js/site.js"></script>
+
+
+
+</head>
+
+<body id="top" class="site">
+    <component param-Environment='@hostingEnv.EnvironmentName' type="typeof(App)" render-mode="WebAssemblyPrerendered" />
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="/" class="reload">Reload</a>
+        <button class="dismiss">🗙</button>
+    </div>
+    <script>
+        window.blazorHelpers = {
+            scrollToFragment: (elementId) => {
+                var element = document.getElementById(elementId);
+
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        };
+    </script>
+
+    <script src="_framework/blazor.webassembly.js" defer></script>
+</body>
+</html>
+

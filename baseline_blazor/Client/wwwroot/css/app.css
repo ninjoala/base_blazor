@@ -1,0 +1,135 @@
+﻿:root {
+    --transition-speed: 300ms;
+    --color-primary: #38543c;
+    --color-secondary: #da5b33;
+    --accent-primary: #5ce378;
+    --accent-secondary: #007500;
+    --navbar-height: 3.5rem;
+}
+
+main {
+    background-color: white;
+}
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.site-content {
+    flex: 1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    border-bottom: 1px solid black;
+    background-color: var(--color-primary);
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 3.5rem;
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.dropdown-content {
+    display: none;
+    color: black;
+    top: 3.5rem;
+    left: 0;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+a.nav-link {
+    text-decoration: none;
+    color: white;
+}
+
+a.nav-link.dropdown-item {
+    color: black;
+}
+
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    align-items: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+
+

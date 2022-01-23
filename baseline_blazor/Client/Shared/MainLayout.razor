@@ -1,0 +1,61 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@using System.Collections
+@using baseline_blazor.Client.Pages;
+
+<CascadingValue Value="this">
+    <CascadingValue Value="IsAuthorized">
+
+        @if (Environment == "Development" || Environment == "Staging")
+        {
+            @if (!IsAuthorized)
+            {
+            }
+            else
+            {
+                <NavMenu />
+
+                <main class="site-content">
+                    @Body
+                </main>
+
+            }
+        }
+        else
+        {
+            <NavMenu />
+
+            <main class="site-content">
+                @Body
+            </main>
+
+        }
+
+    </CascadingValue>
+</CascadingValue>
+
+
+
+@code {
+    [CascadingParameter]
+    public string Environment { get; set; }
+
+    public bool IsAuthorized { get; set; } = true;
+
+    public void Authorize()
+    {
+        if (Environment == "Development" || Environment == "Staging")
+        {
+            IsAuthorized = true;
+            if (IsAuthorized)
+            {
+                NavigationManager.NavigateTo("/");
+            }
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/");
+        }
+
+    }
+}
