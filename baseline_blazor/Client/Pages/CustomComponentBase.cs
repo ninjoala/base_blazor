@@ -8,8 +8,10 @@ namespace baseline_blazor.Client.Pages
 {
     public class CustomComponentBase : ComponentBase, IDisposable
     {
-        [Inject] NavigationManager NavManager { get; set; }
-        [Inject] IJSRuntime JsRuntime { get; set; }
+        [Inject] 
+        public NavigationManager NavManager { get; set; }
+        [Inject] 
+        public IJSRuntime JsRuntime { get; set; }
 
         protected override void OnInitialized()
         {

@@ -1,32 +1,77 @@
 ﻿@using baseline_blazor.Client.Pages
+@inherits CustomComponentBase
 
-<nav class="navbar">
-    <ul class="navbar-nav">
-        <li class="logo nav-item">
-            <a href="#" class="nav-link">
-                Baseline Blazor
-            </a>
-        </li>
-         <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link">List</a>
-            <div class="dropdown-content">
-                <a class="nav-link dropdown-item" href="/">Go Here</a>
-                <a class="nav-link dropdown-item" href="/">Go There</a>
-                <a class="nav-link dropdown-item" href="/">Go Anywhere</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link">About</a>
-            <div class="dropdown-content">
-                <a class="nav-link dropdown-item" href="/" Match="NavLinkMatch.All">My Approach</a>
-                <a class="nav-link dropdown-item" href="/" Match="NavLinkMatch.All">What is This Site About?</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/">Call To Action</a>
-        </li>
-    </ul>
-</nav>
+
+<header class="primary-header">
+
+    <div>
+        <img class="logo" src="/images/mosley-logo.png" height="90" width="90" />
+    </div>
+
+
+
+    <div class="hamburger-lines" data-transformed="false">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+    </div>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+    </button>
+
+    <nav>
+        <ul id="primary-navigation" data-visible="false" class="primary-navigation">
+            <li class="active">
+                <a class="nav-link" href="/">
+                    Home
+                </a>
+            </li>
+            <li class="dropdown">
+
+                <a href="">
+                    Ensembles
+                </a>
+                <div class="dropdown-content" id="dropdown1">
+                    <a class="nav-link dropdown-item" href="/Ensembles#Sotsl">Sound of the Southland</a>
+                    <a class="nav-link dropdown-item" href="/Ensembles#SymphonyBand">Symphony Band</a>
+                    <a class="nav-link dropdown-item" href="/Ensembles#SymphonicBand">Symphonic Band</a>
+                    <a class="nav-link dropdown-item" href="/Ensembles#Jazz">Jazz Ensemble</a>
+                    <a class="nav-link dropdown-item" href="/Ensembles#Percussion">Percussion</a>
+                    <a class="nav-link dropdown-item" href="/Ensembles#Colorguard">Colorguard</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a >
+                    Resources
+                </a>
+                <div class="dropdown-content" id="dropdown2">
+                    <a class="nav-link dropdown-item" href="/Calendar">Calendar</a>
+                    <a class="nav-link dropdown-item" href="/Boosters">Boosters</a>
+                </div>
+            </li>
+            <li>
+                <a class="nav-link" href="https://snap-raise.com/v2/fundraisers/a-crawford-mosley-hs-band-drive-2021#/">
+                    Donate Now!
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="/College">
+                    College
+                </a>
+            </li>
+            <li class="join-band">
+                <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfM861SeZh_sOVQTho0KuqDqXvcpeHa9FWPOKZ29XipabhEDw/viewform">
+                    Join Band
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+@code {
+    public string URL { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        URL = NavManager.BaseUri + "js/NavMenu.js";
+        await JsRuntime.InvokeVoidAsync("loadJs", URL);
+    }
+}
